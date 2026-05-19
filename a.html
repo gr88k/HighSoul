@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HighSound.ru — Курс по FL Studio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Montserrat',sans-serif;
+      background:#0b0b0f;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    a{
+      text-decoration:none;
+      color:white;
+    }
+
+    .container{
+      width:90%;
+      max-width:1200px;
+      margin:auto;
+    }
+
+    header{
+      position:fixed;
+      width:100%;
+      top:0;
+      left:0;
+      z-index:1000;
+      backdrop-filter:blur(10px);
+      background:rgba(0,0,0,0.5);
+      border-bottom:1px solid rgba(255,255,255,0.08);
+    }
+
+    nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:20px 0;
+    }
+
+    .logo{
+      font-size:28px;
+      font-weight:800;
+      color:#8f5cff;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:30px;
+    }
+
+    .nav-links a{
+      color:#ddd;
+      transition:0.3s;
+    }
+
+    .nav-links a:hover{
+      color:#8f5cff;
+    }
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      background:
+      linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)),
+      url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=1600&auto=format&fit=crop') center/cover;
+    }
+
+    .hero-content{
+      max-width:700px;
+    }
+
+    .hero h1{
+      font-size:70px;
+      line-height:1.1;
+      margin-bottom:25px;
+    }
+
+    .hero p{
+      font-size:20px;
+      color:#cfcfcf;
+      margin-bottom:40px;
+      line-height:1.6;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:18px 38px;
+      border-radius:14px;
+      background:#8f5cff;
+      color:white;
+      font-weight:700;
+      transition:0.3s;
+    }
+
+    .btn:hover{
+      transform:translateY(-3px);
+      background:#7640ff;
+    }
+
+    section{
+      padding:110px 0;
+    }
+
+    .section-title{
+      font-size:50px;
+      margin-bottom:20px;
+      text-align:center;
+    }
+
+    .section-sub{
+      color:#aaa;
+      text-align:center;
+      margin-bottom:70px;
+      line-height:1.6;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:25px;
+    }
+
+    .card{
+      background:#14141d;
+      border:1px solid rgba(255,255,255,0.05);
+      border-radius:24px;
+      padding:35px;
+      transition:0.3s;
+    }
+
+    .card:hover{
+      transform:translateY(-8px);
+      border-color:#8f5cff;
+    }
+
+    .card h3{
+      margin-bottom:20px;
+      font-size:24px;
+    }
+
+    .card p{
+      color:#b9b9b9;
+      line-height:1.7;
+    }
+
+    .program{
+      display:flex;
+      flex-direction:column;
+      gap:25px;
+    }
+
+    .program-item{
+      background:#14141d;
+      padding:35px;
+      border-radius:20px;
+      border-left:5px solid #8f5cff;
+    }
+
+    .program-item h3{
+      margin-bottom:15px;
+      font-size:28px;
+    }
+
+    .program-item p{
+      color:#bcbcbc;
+      line-height:1.8;
+    }
+
+    .pricing{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:30px;
+    }
+
+    .price-card{
+      background:#151520;
+      border-radius:24px;
+      padding:45px;
+      text-align:center;
+      border:1px solid rgba(255,255,255,0.06);
+    }
+
+    .price-card h3{
+      font-size:32px;
+      margin-bottom:20px;
+    }
+
+    .price{
+      font-size:55px;
+      color:#8f5cff;
+      margin-bottom:25px;
+      font-weight:800;
+    }
+
+    .price-card ul{
+      list-style:none;
+      margin-bottom:35px;
+    }
+
+    .price-card li{
+      margin-bottom:15px;
+      color:#c9c9c9;
+    }
+
+    .cta{
+      text-align:center;
+      background:linear-gradient(135deg,#8f5cff,#5b2eff);
+      border-radius:30px;
+      padding:80px 40px;
+    }
+    .cta h2{
+      font-size:48px;
+      margin-bottom:25px;
+    }
+
+    .cta p{
+      max-width:700px;
+      margin:auto;
+      margin-bottom:35px;
+      line-height:1.7;
+      color:#f1f1f1;
+    }
+
+    footer{
+      padding:50px 0;
+      text-align:center;
+      color:#999;
+      border-top:1px solid rgba(255,255,255,0.05);
+    }
+
+    @media(max-width:768px){
+
+      .hero h1{
+        font-size:42px;
+      }
+
+      .section-title{
+        font-size:36px;
+      }
+
+      .nav-links{
+        display:none;
+      }
+
+      .hero p{
+        font-size:18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <div class="logo">HighSound.ru</div>
+
+      <div class="nav-links">
+        <a href="#about">О курсе</a>
+        <a href="#program">Программа</a>
+        <a href="#prices">Тарифы</a>
+        <a href="#contact">Контакты</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+
+      <h1>
+        Онлайн курс <br>
+        по FL Studio
+      </h1>
+
+      <p>
+        Научись создавать современную музыку с нуля.
+        От первого бита до полноценного релиза
+        на Spotify и Apple Music.
+      </p>
+
+      <a href="#prices" class="btn">
+        Записаться на курс
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+
+    <h2 class="section-title">
+      Для кого этот курс
+    </h2>
+
+    <p class="section-sub">
+      Курс создан специально для новичков,
+      которые хотят научиться создавать музыку
+      в FL Studio и зарабатывать на этом.
+    </p>
+
+    <div class="cards">
+
+      <div class="card">
+        <h3>Новичкам</h3>
+        <p>
+          Если вы никогда не открывали FL Studio —
+          курс проведет вас с полного нуля.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Битмейкерам</h3>
+        <p>
+          Узнаете как создавать профессиональные
+          биты, аранжировки и делать качественный звук.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Артистам</h3>
+        <p>
+          Научитесь записывать и обрабатывать
+          вокал для своих треков.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section id="program">
+  <div class="container">
+
+    <h2 class="section-title">
+      Программа курса
+    </h2>
+
+    <p class="section-sub">
+      7 больших этапов обучения
+      от основ музыки до коммерческих релизов.
+    </p>
+
+    <div class="program">
+
+      <div class="program-item">
+        <h3>Этап 1 — Исследование и инструменты</h3>
+        <p>
+          Настройка FL Studio, оборудование домашней студии,
+          основы звука, первый музыкальный луп,
+          MIDI и Audio.
+        </p>
+      </div>
+
+      <div class="program-item">
+        <h3>Этап 2 — Музыкальная грамотность</h3>
+        <p>
+          Ритм, ноты, аккорды, гармония,
+          построение прогрессий и работа с мелодией.
+        </p>
+      </div>
+
+      <div class="program-item">
+        <h3>Этап 3 — Инструменты продюсера</h3>
+        <p>
+          Синтез звука, семплирование,
+          эффекты обработки, эквализация,
+          компрессия и реверберация.
+        </p>
+      </div>
+
+      <div class="program-item">
+        <h3>Этап 4 — Аранжировка</h3>
+        <p>
+          Построение структуры трека,
+          автоматизация и создание динамики.
+        </p>
+      </div>
+
+      <div class="program-item">
+        <h3>Этап 5 — Работа с вокалом</h3>
+        <p>
+          Запись вокала, AutoTune,
+          обработка голоса и создание вокальных цепочек.
+        </p>
+      </div>
+
+      <div class="program-item">
+        <h3>Этап 6 — Сведение и мастеринг</h3>
+        <p>
+          Профессиональный микс,
+          баланс громкости, LUFS,
+          мастеринг под Spotify и Apple Music.
+        </p>
+      </div>
+
+      <div class="program-item">
+        <h3>Этап 7 — Финал и индустрия</h3>
+        <p>
+          Релиз треков, работа с лейблами,
+          дистрибуция и продвижение музыки.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<section id="prices">
+  <div class="container">
+
+    <h2 class="section-title">
+      Тарифы
+    </h2>
+
+    <p class="section-sub">
+      Выберите подходящий формат обучения
+    </p>
+
+    <div class="pricing">
+
+      <div class="price-card">
+
+        <h3>Базовый</h3>
+
+        <div class="price">
+          19 900₽
+        </div>
+
+        <ul>
+          <li>Доступ к курсу</li>
+          <li>Домашние задания</li>
+          <li>Чат студентов</li>
+        </ul>
+
+        <a href="#" class="btn">
+          Купить
+        </a>
+
+      </div>
+
+      <div class="price-card">
+
+        <h3>PRO</h3>
+
+        <div class="price">
+          39 900₽
+        </div>
+
+        <ul>
+          <li>Все из Базового</li>
+          <li>Проверка треков</li>
+          <li>Обратная связь</li>
+          <li>Создание EP</li>
+        </ul>
+
+        <a href="#" class="btn">
+          Купить
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="container">
+
+    <div class="cta">
+
+      <h2>
+        Начни создавать музыку уже сегодня
+      </h2>
+
+      <p>
+        Получи профессию музыкального продюсера
+        и научись делать коммерческий звук
+        в FL Studio.
+      </p>
+
+      <a href="#" class="btn">
+        Оставить заявку
+      </a>
+
+    </div>
+
+  </div>
+</section>
+
+<footer id="contact">
+
+  <div class="container">
+    © 2026 HighSound.ru — Онлайн школа музыки
+  </div>
+
+</footer>
+
+</body>
+</html>
